@@ -59,6 +59,7 @@ class GlowTrainer:
         img = (img - 0.5 * 0.05) / (1.0 -  0.05) * 255.
         return tf.clip_by_value(tf.cast(img, tf.uint8), 0, 255)
 
+    # ref : https://github.com/MokkeMeguru/TFGENZOO/blob/master/TFGENZOO/flows/quantize.py
     def uniform_quantization_loss(self, img):
         pre_logit_scale = tf.math.log(0.05) - tf.math.log(1.0 - 0.05)
         logdet_jacobian = tf.math.softplus(img) + tf.math.softplus(-img) - tf.math.softplus(pre_logit_scale)
