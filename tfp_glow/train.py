@@ -79,7 +79,7 @@ class GlowTrainer:
     @tf.function
     def train_step(self, x):
         with tf.GradientTape() as tape:
-            log_prob_loss = -self.model.log_prob(x) + self.uniform_quantization_loss(x)
+            log_prob_loss = - (self.model.log_prob(x) + self.uniform_quantization_loss(x))
         variables = tape.watched_variables()
         grads = tape.gradient(log_prob_loss, variables)
         self.optimizer.apply_gradients(zip(grads, variables))
