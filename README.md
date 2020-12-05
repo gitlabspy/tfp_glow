@@ -4,6 +4,10 @@ Requirements:
 - `tfp-nightly`
 - `tf-nightly` or `tf-nightly-gpu`
 
+Bijectors:
+- conditional glow
+- macow
+
 Training:
 ```
 hpams = Hyparams() # hyper parameters
